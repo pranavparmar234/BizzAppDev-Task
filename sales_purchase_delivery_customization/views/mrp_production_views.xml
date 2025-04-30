@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mrp_production_form_view_inherit" model="ir.ui.view">
+        <field name="name">mrp.production.view.inherited</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="sale_mrp.mrp_production_form_view_sale"/>
+        <field name="arch" type="xml">
+            <field name="qty_producing" position="attributes">
+                <attribute name="readonly">
+                    state == 'cancel' or (state == 'done' and is_locked) or (sale_line_id != False and state != 'draft')
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
